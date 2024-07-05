@@ -2,16 +2,16 @@
 -- +goose StatementBegin
 CREATE TABLE brand (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL DEFAULT '',
+    title TEXT NOT NULL DEFAULT '' UNIQUE,
     description NOT NULL DEFAULT '',
     url NOT NULL DEFAULT '',
     logo NOT NULL DEFAULT ''
 );
 
--- TEXT CHECK(category IN ('компонент', 'шампунь', 'бальзам', 'стайлинг', 'пилинг')) NOT NULL DEFAULT 'компонент'
 CREATE TABLE category (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL DEFAULT '',
+    title TEXT NOT NULL DEFAULT '' UNIQUE,
+    title_en TEXT NOT NULL DEFAULT '' UNIQUE,
     description NOT NULL DEFAULT ''
 );
 
@@ -21,6 +21,7 @@ CREATE TABLE product (
     title TEXT NOT NULL DEFAULT '',
     url TEXT NOT NULL DEFAULT '',
     components TEXT NOT NULL DEFAULT '',
+    description TEXT NOT NULL DEFAULT '',
     brand_id INTEGER NOT NULL,
     category_id INTEGER NOT NULL,
     FOREIGN KEY (brand_id) REFERENCES brand (id),

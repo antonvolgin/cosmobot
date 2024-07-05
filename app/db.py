@@ -26,7 +26,9 @@ def db_select_products():
     conn.row_factory = sqlite.Row
 
     sql = f"""
-    SELECT * FROM product;
+    SELECT * FROM product p
+    LEFT JOIN category c ON c.id = p.category_id
+    LEFT JOIN brand b ON b.id = p.brand_id;
     """
 
     logger_info(f"sql: {sql}")
@@ -39,6 +41,24 @@ def db_select_products():
     logger_info(f"rows:{len(rows)}")
 
     return rows 
+
+def db_select_product(barcode: int):
+    conn = _db_create_connection()
+    conn.row_factory = sqlite.Row
+
+    sql = f"""
+    SELECT * FROM product p
+    WHERE p.barcode = {barcode};
+    """
+
+    logger_info(f"sql: {sql}")
+
+    cur = conn.execute(sql)
+    row = cur.fetchone()
+    cur.close()
+    conn.close()
+    
+    return row
 
 # def db_insert_video(db_conn, eid, path, path_names, name, origin_size, description, created_at, status):
 #     logger_info(f"db_insert_video: {eid}, {path}, {path_names}, {name}, {origin_size}, {created_at}, {status}")
