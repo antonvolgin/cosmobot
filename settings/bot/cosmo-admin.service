@@ -1,0 +1,17 @@
+root@95-163-243-208:/lib/systemd/system# cat cosmo_admin.service 
+[Unit]
+Description=Telegram bot
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/local/bin/cosmo_admin_bot
+Environment="PATH=/usr/local/bin/cosmo_admin_bot/venv/bin:$PATH"
+ExecStart=/bin/bash -c "source /usr/local/bin/cosmo_admin_bot/venv/bin/activate && /usr/local/bin/cosmo_admin_bot/venv/bin/python /usr/local/bin/cosmo_admin_bot/main.py"
+RestartSec=10
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,50 @@
+=================================
+# /usr/local/bin/cosmocode_apiai
+
+mkdir cosmocode_apiai
+python3 -m venv env
+source env/bin/activate
+
+pip3 install -r requirements.txt -v
+
+tar zxvf dist.tar.gz
+
+cp settings.ini.origin settings.ini
+
+mkdir database
+
+curl -fsSL https://raw.githubusercontent.com/pressly/goose/master/install.sh | sh -s v3.7.0
+
+# list all available for installation versiosns of package
+# sudo apt-cache madison make
+
+# sudo apt install <package name>=<version>
+# sudo apt install make=4.2.1-1.2
+
+make up
+
+sqlite3 database/cosmo_catalog.db .schema
+sqlite3 database/cosmo_catalog.db < dummy.sql
+sqlite3 database/cosmo_catalog.db 'select * from products'
+
+uvicorn app.main:app --host 127.0.0.1 --port 8001 --reload
+
+curl -L http://localhost:8001/products
+
+# added /lib/systemd/system/cosmocode-apiai.service
+
+sudo systemctl start cosmocode-apiai 
+sudo systemctl status cosmocode-apiai 
+
+# nginx
+cat /etc/nginx/nginx.config
+
+added     
+location /apiai {
+      proxy_pass http://localhost:8001;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+=================================

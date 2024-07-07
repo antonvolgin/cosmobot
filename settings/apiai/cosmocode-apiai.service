@@ -1,0 +1,16 @@
+[Unit]
+Description=cosmocode-apiai
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/local/bin/cosmocode_apiai
+Environment="PATH=/usr/local/bin/cosmocode_apiai/env/bin:$PATH"
+ExecStart=/bin/bash -c "source /usr/local/bin/cosmocode_apiai/env/bin/activate && /usr/local/bin/cosmocode_apiai/env/bin/python /usr/local/bin/uvicorn app.main:app --port 8001 --reload"
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

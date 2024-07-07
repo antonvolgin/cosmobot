@@ -19,13 +19,13 @@ class ParamSuggestion(BaseModel):
     category: Category
     ingredients: str
 
-@router.get("/products/", tags=["products"])
+@router.get("/apiai/products/", tags=["products"])
 async def read_products():
     rows = db_select_products()
 
     return {"status": status.HTTP_200_OK, "data": list(rows)}
 
-@router.get("/product/{barcode}")
+@router.get("/apiai/product/{barcode}")
 async def read_product(barcode: int):
     row = db_select_product(barcode)
 
@@ -34,7 +34,7 @@ async def read_product(barcode: int):
     
     return {"status": status.HTTP_404_NOT_FOUND, "data": None}
 
-@router.get("/suggestions/")
+@router.get("/apiai/suggestions/")
 async def get_suggestions(param: ParamSuggestion):
     logger_debug(f"param: {param}")
 

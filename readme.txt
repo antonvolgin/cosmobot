@@ -35,3 +35,26 @@ SELECT p.id, p.barcode, p.title product, c.title category, b.title brand FROM pr
    
 SELECT * FROM product p
     WHERE p.id = 1;
+
+===============================================
+/lib/systemd/system# 
+
+api.service
+bot.service 
+cosmo_admin.service
+
+===============================================
+curl -L --request GET \
+  --url 'https://cosmocode.site/apiai/suggestions?=' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"category":"shampoo",
+	"ingredients":"Aqua, Cetearyl Alcohol, Cetrimonium Chloride"
+}
+'
+
+curl -L --request GET \
+  --url 'https://cosmocode.site/apiai/product/111?=' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/9.3.1'
+===============================================

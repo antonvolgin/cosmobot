@@ -8,15 +8,15 @@ SQLITE=$(CURDIR)/database/cosmo_catalog.db
 MIGRATIONSDIR=$(CURDIR)/migrations
 VERSION_TABLE=_version
 
-# pack:
-# 	# tar zcvf "$$(date +'%Y-%m-%d_%H-%M-%S').tar.gz" -T tar_list.txt
-# 	tar zcvf dist.tar.gz -T tar_list.txt
+pack:
+	# tar zcvf "$$(date +'%Y-%m-%d_%H-%M-%S').tar.gz" -T tar_list.txt
+	tar zcvf dist.tar.gz -T tar_list.txt
 
 # view:
 # 	tar -tvf dist.tar.gz
 
-# target:
-# 	scp dist.tar.gz 10.111.29.6:/opt/archive-downloader/videotable
+target:
+	scp dist.tar.gz root@95.163.243.208:/usr/local/bin/cosmocode_apiai/
 
 # 	# tar zxvf dist.tar.gz
 
