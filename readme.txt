@@ -44,17 +44,27 @@ bot.service
 cosmo_admin.service
 
 ===============================================
+https://cosmocode.site/docs
+
+curl -L https://cosmocode.site/apiai/categories > response_categories.json
+curl -L https://cosmocode.site/apiai/products > response_products.json
+curl -L https://cosmocode.site/apiai/brands > response_brands.json
+curl -L https://cosmocode.site/apiai/logs > response_logs.json
+
 curl -L --request GET \
   --url 'https://cosmocode.site/apiai/suggestions?=' \
   --header 'Content-Type: application/json' \
   --data '{
 	"category":"shampoo",
 	"ingredients":"Aqua, Cetearyl Alcohol, Cetrimonium Chloride"
-}
-'
+}'
 
 curl -L --request GET \
   --url 'https://cosmocode.site/apiai/product/111?=' \
-  --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/9.3.1'
+  --header 'Content-Type: application/json''
+
+curl -L -F "file=@brand_1.csv" https://cosmocode.site/apiai/upload/brands > response_brands.json
+curl -L -F "file=@product_1.csv" https://cosmocode.site/apiai/upload/products > response_products.json
+
 ===============================================
+
