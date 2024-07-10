@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
-from .routers import products, upload, webapp
+from .routers import products, upload
 from .db import db_select_products
 
 app = FastAPI(docs_url="/docs", redoc_url=None)

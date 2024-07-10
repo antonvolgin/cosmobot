@@ -220,7 +220,7 @@ def db_insert_product(barcode: int, title: str, url: str, components: str, descr
     conn.close()
 
 def db_insert_many_product(products: list):
-    logger_info(f"db_insert_many_product: {products}")
+    logger_info(f"db_insert_many_product...")
 
     conn = _db_create_connection()
     conn.row_factory = sqlite.Row
@@ -243,7 +243,7 @@ def db_insert_many_product(products: list):
     conn.close()
 
 def db_insert_many_brand(brands: list):
-    logger_info(f"db_insert_many_brands: {brands}")
+    logger_info(f"db_insert_many_brands...")
 
     conn = _db_create_connection()
     conn.row_factory = sqlite.Row

@@ -94,7 +94,7 @@ def upload_products(file: UploadFile = File(...)):
             products.append(product)
 
         for item in products:
-            print(f"{item.barcode} {item.title} {item.category_id} {item.brand_id}")
+            # print(f"{item.barcode} {item.title} {item.category_id} {item.brand_id}")
             pt = (item.barcode, item.title, item.url, item.components, item.description, item.category_id, item.brand_id, )
             products_tuple.append(pt)
 
@@ -138,4 +138,4 @@ def upload_brands(file: UploadFile = File(...)):
 
         db_insert_many_brand(brands_tuple)
 
-        return {"status": status.HTTP_200_OK, "data": brands} 
+        return {"status": status.HTTP_200_OK} 

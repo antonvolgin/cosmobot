@@ -67,4 +67,3 @@ curl -L -F "file=@brand_1.csv" https://cosmocode.site/apiai/upload/brands > resp
 curl -L -F "file=@product_1.csv" https://cosmocode.site/apiai/upload/products > response_products.json
 
 ===============================================
-
