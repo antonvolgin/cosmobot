@@ -29,7 +29,7 @@
             {% if p == page %}
                 <strong>{{ p }}</strong>
             {% else %}
-                <a href="/products/?page={{ p }}{% if filter %}&filter={{ filter }}{% endif %}">{{ p }}</a>
+                <a href="/apiai/back/?page={{ p }}{% if filter %}&filter={{ filter }}{% endif %}">{{ p }}</a>
             {% endif %}
         {% endfor %}        
         ]
@@ -43,7 +43,7 @@
     <script>
         function resetFilter() {
             document.getElementById("filter").value = "";
-            window.location.href = "/products/?page=1";
+            window.location.href = "/apiai/back/?page=1";
         }
     </script>
 </body>

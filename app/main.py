@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse
 from .routers import products, upload
 from .db import db_select_products
 
-app = FastAPI(docs_url="/docs", redoc_url=None)
+app = FastAPI(docs_url="/apiai/docs", redoc_url=None)
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -18,13 +18,13 @@ app.mount("/static", StaticFiles(directory=str(Path(BASE_DIR, "static"))), name=
 app.include_router(products.router)
 app.include_router(upload.router)
 
-@app.get("/")
+@app.get("/apiai")
 async def root():
     return {"message": "Hello Cosmocode: APIAI!"}
 
 ITEMS_PER_PAGE = 30
 
-@app.get("/products", response_class=HTMLResponse)
+@app.get("/apiai/back", response_class=HTMLResponse)
 async def products(request: Request, page: int = 1, filter: str = ""):
     items, total_items = db_select_products(page, ITEMS_PER_PAGE, filter)
     total_pages = (total_items + ITEMS_PER_PAGE - 1) // ITEMS_PER_PAGE

@@ -2,6 +2,9 @@ app/routers/__init__.py
 app/routers/products.py
 app/routers/upload.py
 
+app/templates/index.html
+app/static/styles.css
+
 app/config.py
 app/db.py
 app/logger.py
