@@ -28,15 +28,14 @@ def db_select_products(page: int = 1, per_page: int = 20, filter: str = None):
     if filter:
         sql_count = f"""
         SELECT count(*) FROM product p
-        WHERE p.title LIKE ? OR p.components LIKE ? OR p.description LIKE ?;
+        WHERE p.barcode LIKE ? OR p.title LIKE ? OR p.components LIKE ? OR p.description LIKE ?;
         """
-        cur = conn.execute(sql_count, (f"%{filter}%", f"%{filter}%", f"%{filter}%"))
+        cur = conn.execute(sql_count, (f"%{filter}%", f"%{filter}%", f"%{filter}%", f"%{filter}%"))
     else:
         sql_count = f"""
         SELECT count(*) FROM product p;
         """
         cur = conn.execute(sql_count)
-
 
     total = cur.fetchone()[0]
 
@@ -47,10 +46,10 @@ def db_select_products(page: int = 1, per_page: int = 20, filter: str = None):
         SELECT * FROM product p
         LEFT JOIN category c ON c.id = p.category_id
         LEFT JOIN brand b ON b.id = p.brand_id
-        WHERE p.title LIKE ? OR p.components LIKE ? OR p.description LIKE ?
+        WHERE p.barcode LIKE ? OR p.title LIKE ? OR p.components LIKE ? OR p.description LIKE ?
         LIMIT ? OFFSET ?;
         """
-        cur = conn.execute(sql, (f"%{filter}%", f"%{filter}%", f"%{filter}%", per_page, offset))
+        cur = conn.execute(sql, (f"%{filter}%", f"%{filter}%", f"%{filter}%", f"%{filter}%", per_page, offset))
     else:
         sql = f"""
         SELECT * FROM product p
@@ -66,7 +65,7 @@ def db_select_products(page: int = 1, per_page: int = 20, filter: str = None):
     cur.close()
     conn.close()
     
-    logger_info(f"rows:{len(rows)}")
+    # logger_info(f"rows:{len(rows)}")
 
     return rows, total
 

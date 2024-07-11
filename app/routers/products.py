@@ -36,7 +36,7 @@ async def read_product(barcode: int):
     db_insert_log(barcode, None)
     return {"status": status.HTTP_404_NOT_FOUND, "data": None}
 
-@router.get("/apiai/suggestions/")
+@router.post("/apiai/suggestions/")
 async def get_suggestions(param: ParamSuggestion):
     logger_debug(f"suggestions: param: {param}")
 
