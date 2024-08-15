@@ -1,50 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Upload File</title>
+    <title>Cosmo APIAI</title>
     <link rel="stylesheet" href="/static/styles.css">    
 </head>
 <body>
-    <b>Upload: Brands.csv</b>
-    <form action="/apiai/upload/brands" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit">Upload</button>
-    </form>
-    <b>Upload: Products.csv</b>
-    <form action="/apiai/upload/products" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit">Upload</button>
-    </form>
-    <b>Search:</b>
-    <form method="get">
-        <!-- <label for="filter">Фильтр:</label> -->
-        <input type="text" id="filter" name="filter" value="{{ filter }}">
-        <button type="submit">Фильтр</button>
-        <button type="button" onclick="resetFilter()">Сброс фильтра</button>
-    </form>    
     <div>
-        <b>Products</b>
-        [
-        {% for p in range(1, total_pages + 1) %}
-            {% if p == page %}
-                <strong>{{ p }}</strong>
-            {% else %}
-                <a href="/apiai/back/?page={{ p }}{% if filter %}&filter={{ filter }}{% endif %}">{{ p }}</a>
-            {% endif %}
-        {% endfor %}        
-        ]
-    </div>    
-    <table border="1" width="100%" bgcolor="#FFFFFF"
-        bordercolor="#000000" cellspacing="0" cellpadding="2">        
-        {% for item in items %}
-            <tr><td>{{ item.barcode }}</td><td>{{ item.title }}</td><td>{{ item.components }}</td><td>{{ item.description }}</td></tr>
-        {% endfor %}
-    </table>
-    <script>
-        function resetFilter() {
-            document.getElementById("filter").value = "";
-            window.location.href = "/apiai/back/?page=1";
-        }
-    </script>
+        <a href="/apiai/back/logs">Logs</a>
+        <a href="/apiai/back/products">Products</a>
+        <a href="/apiai/back/uploads">Uploads</a>
+    </div>
 </body>
 </html>

@@ -1,0 +1,29 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "id": 1,
+            "title": "стайлинг",
+            "title_en": "stayling",
+            "description": "Описание Стайлинг"
+        },
+        {
+            "id": 2,
+            "title": "шампунь",
+            "title_en": "shampoo",
+            "description": "Описание Шампунь"
+        },
+        {
+            "id": 3,
+            "title": "бальзам",
+            "title_en": "balzam",
+            "description": "Описание Бальзам"
+        },
+        {
+            "id": 4,
+            "title": "укладка",
+            "title_en": "piling",
+            "description": "Описание Укладка"
+        }
+    ]
+}

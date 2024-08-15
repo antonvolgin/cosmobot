@@ -2,20 +2,28 @@ app/routers/__init__.py
 app/routers/products.py
 app/routers/upload.py
 
-app/templates/index.html
 app/static/styles.css
+app/templates/index.html
+app/templates/logs.html
+app/templates/products.html
+app/templates/uploads.html
 
+app/__init__.py
 app/config.py
 app/db.py
 app/logger.py
+app/logs.py
 app/main.py
-app/__init__.py
+app/products.py
+app/upload.py
 
 migrations/
-dummy.sql
-settings.ini.origin
-requirements.txt
-Makefile
-tar_list.txt
-readme.txt
+settings/
+
 deploy_log.txt
+dummy.sql
+Makefile
+readme.txt
+requirements.txt
+settings.ini.origin
+tar_list.txt

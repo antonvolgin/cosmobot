@@ -9,10 +9,9 @@ VALUES
 INSERT INTO category
 (title, title_en, description)
 VALUES
-('стайлинг', 'stayling', 'Описание Стайлинг'),
 ('шампунь', 'shampoo', 'Описание Шампунь'),
-('бальзам', 'balzam', 'Описание Бальзам'),
-('укладка', 'piling', 'Описание Укладка')
+('бальзам', 'balsam', 'Описание Бальзам'),
+('стайлинг', 'styling', 'Описание Стайлинг')
 ;
 
 INSERT INTO product

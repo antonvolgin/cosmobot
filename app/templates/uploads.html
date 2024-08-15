@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cosmo APIAI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div><a href="/apiai/back?">back</a></div>
+    <br>
+    <b>Uploads</b>
+    <br>
+    <div>
+        <span>Brands CSV</span>
+        <form action="/apiai/upload/brands" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    <div>
+        <span>Products CSV</span>
+        <form action="/apiai/upload/products" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -75,10 +75,12 @@ def upload_products(file: UploadFile = File(...)):
         for item in csvReader:
             category = find_record(categories, "title", item['category'])
             if not category:
+                print(f"bad category: {item['category']}")
                 continue
 
             brand = find_record(brands, "title", item["brand"])
             if not brand:
+                print(f"bad brand: {item['brand']}")
                 continue
 
             product = ProductModel(
@@ -95,7 +97,7 @@ def upload_products(file: UploadFile = File(...)):
 
         for item in products:
             # print(f"{item.barcode} {item.title} {item.category_id} {item.brand_id}")
-            pt = (item.barcode, item.title, item.url, item.components, item.description, item.category_id, item.brand_id, )
+            pt = (item.barcode, item.title, item.url, item.components, item.description, item.brand_id, item.category_id, )
             products_tuple.append(pt)
 
         file.file.close()

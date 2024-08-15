@@ -1,3 +1,8 @@
+uvicorn app.main:app --host 127.0.0.1 --port 8001 --reload
+
+==============================================
+
+
 INSERT INTO brand
 (title, description, url, logo)
 VALUES 
@@ -51,7 +56,7 @@ curl -L https://cosmocode.site/apiai/products > response_products.json
 curl -L https://cosmocode.site/apiai/brands > response_brands.json
 curl -L https://cosmocode.site/apiai/logs > response_logs.json
 
-curl -L --request GET \
+curl -L --request POST \
   --url 'https://cosmocode.site/apiai/suggestions?=' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -67,3 +72,18 @@ curl -L -F "file=@brand_1.csv" https://cosmocode.site/apiai/upload/brands > resp
 curl -L -F "file=@product_1.csv" https://cosmocode.site/apiai/upload/products > response_products.json
 
 ===============================================
+
+sqlite3 database/cosmo_catalog.db <<EOF
+INSERT INTO category
+(title, title_en, description)
+VALUES
+('шампунь', 'shampoo', 'Описание Шампунь'),
+('бальзам', 'balsam', 'Описание Бальзам'),
+('стайлинг', 'styling', 'Описание Стайлинг')
+;
+EOF
+
+20240814
+импортирует не все Продукты (Brand-ы втянулись все)
+в экселе 334, а локально втянулось только 129
+проверил, просто нет ряда брэндов и местами не указана категория
